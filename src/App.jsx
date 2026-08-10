@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
-import DashboardLayout from "./components/DashboardLayout";
+import DashboardLayout from "./Components/DashboardLayout";
 
 import BuildingAnalysis from "./pages/BuildingAnalysis";
 import AnalysisHistory from "./pages/AnalysisHistory";
@@ -59,7 +59,8 @@ export default function App() {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${darkMode ? 'dark bg-slate-950' : 'bg-slate-50'}`}>
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
+      <BrowserRouter basename="/daikin-ac-portal">
         <DashboardLayout
           user={user}
           setUser={setUser}
