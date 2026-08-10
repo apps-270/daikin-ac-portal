@@ -1,0 +1,74 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Amit Sharma",
+      "email": "amit@gmail.com",
+      "password": "123456",
+      "role": "Sales Manager"
+    },
+    {
+      "id": 2,
+      "name": "Priya Verma",
+      "email": "priya@gmail.com",
+      "password": "pass123",
+      "role": "Sales Executive"
+    },
+    {
+      "id": 3,
+      "name": "Rohit Singh",
+      "email": "rohit@gmail.com",
+      "password": "rohit123",
+      "role": "customer_support"
+    },
+    {
+      "id": 4,
+      "name": "Neha Gupta",
+      "email": "neha@gmail.com",
+      "password": "neha123",
+      "role": "product_management"
+    },
+    {
+      "id": 5,
+      "name": "Vikram Patel",
+      "email": "vikram@gmail.com",
+      "password": "vikram123",
+      "role": "engineering"
+    },
+    {
+      "id": 6,
+      "name": "Admin User",
+      "email": "admin@daikin.com",
+      "password": "admin123",
+      "role": "Admin"
+    },
+    {
+      "id": 7,
+      "name": "Aparna Singh",
+      "email": "aparna.05@gmail.com",
+      "password": "aparna123",
+      "role": "Admin"
+    },
+    {
+      "id": 8,
+      "name": "Test User",
+      "email": "test@example.com",
+      "password": "test123456",
+      "role": "Employee"
+    },
+    {
+      "id": 9,
+      "name": "Rahul",
+      "email": "sales@daikin.com",
+      "password": "123",
+      "role": "Sales Executive"
+    },
+    {
+      "id": 10,
+      "email": "manager@daikin.com",
+      "password": "123",
+      "name": "Ankit",
+      "role": "Sales Manager"
+    }
+  ]
+}

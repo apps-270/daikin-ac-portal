@@ -1,0 +1,1509 @@
+@import "tailwindcss";
+
+/* Use the application's `.dark` class for Tailwind dark-mode utilities. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================
+   REQUIRED STAR - Always Red
+   ============================================ */
+
+.required-star {
+  color: #dc2626 !important;
+  display: inline-block;
+  margin-left: 2px;
+  font-weight: 700;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f0f2f5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark Mode Body */
+.dark-mode body,
+body.dark-mode,
+html.dark body,
+html.dark-mode body {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb,
+html.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover,
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.dark-mode *,
+html.dark * {
+  scrollbar-color: #475569 transparent;
+}
+
+/* ============================================
+   NUMBER INPUT SPINNERS - Arrows Only
+   ============================================ */
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  padding-right: 12px !important;
+}
+
+/* Chrome / Edge / Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: auto !important;
+  appearance: auto !important;
+
+  opacity: 0.7 !important;
+
+  /* Remove everything except the arrows */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  filter: none !important;
+
+  cursor: pointer;
+}
+
+/* Light mode — dark arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  color: #222 !important;
+}
+
+/* Hover — darker arrows */
+input[type="number"]::-webkit-inner-spin-button:hover,
+input[type="number"]::-webkit-outer-spin-button:hover {
+  opacity: 1 !important;
+}
+
+/* Dark mode — white arrows */
+.dark-mode input[type="number"]::-webkit-inner-spin-button,
+.dark-mode input[type="number"]::-webkit-outer-spin-button,
+html.dark input[type="number"]::-webkit-inner-spin-button,
+html.dark input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.75 !important;
+  filter: invert(1) !important;
+}
+
+/* Dark mode hover */
+.dark-mode input[type="number"]::-webkit-inner-spin-button:hover,
+.dark-mode input[type="number"]::-webkit-outer-spin-button:hover,
+html.dark input[type="number"]::-webkit-inner-spin-button:hover,
+html.dark input[type="number"]::-webkit-outer-spin-button:hover {
+  opacity: 1 !important;
+  filter: invert(1) !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    opacity: 0.8 !important;
+  }
+}
+/* ============================================
+   NUMBER INPUT SPINNERS - Elegant Arrows
+   ============================================ */
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  padding-right: 14px !important;
+}
+
+/* Chrome / Edge / Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: auto !important;
+  appearance: auto !important;
+
+  opacity: 0.65 !important;
+
+  /* Keep ONLY the arrows */
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  cursor: pointer;
+
+  /* Slightly soften the native arrows */
+  transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+}
+
+/* ============================================
+   LIGHT MODE
+   ============================================ */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  filter: brightness(0.35) contrast(1.2);
+}
+
+input[type="number"]::-webkit-inner-spin-button:hover,
+input[type="number"]::-webkit-outer-spin-button:hover {
+  opacity: 1 !important;
+  filter: brightness(0.05) contrast(1.3)
+          drop-shadow(0 0 3px rgba(0, 0, 0, 0.25));
+  transform: scale(1.12);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark-mode input[type="number"]::-webkit-inner-spin-button,
+.dark-mode input[type="number"]::-webkit-outer-spin-button,
+html.dark input[type="number"]::-webkit-inner-spin-button,
+html.dark input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.7 !important;
+  filter: invert(1) brightness(0.9);
+}
+
+.dark-mode input[type="number"]::-webkit-inner-spin-button:hover,
+.dark-mode input[type="number"]::-webkit-outer-spin-button:hover,
+html.dark input[type="number"]::-webkit-inner-spin-button:hover,
+html.dark input[type="number"]::-webkit-outer-spin-button:hover {
+  opacity: 1 !important;
+  filter: invert(1) brightness(1.2)
+          drop-shadow(0 0 4px rgba(255, 255, 255, 0.45));
+  transform: scale(1.12);
+}
+
+/* ============================================
+   ACTIVE / CLICK EFFECT
+   ============================================ */
+
+input[type="number"]::-webkit-inner-spin-button:active,
+input[type="number"]::-webkit-outer-spin-button:active {
+  transform: scale(0.92);
+  transition: transform 0.08s ease;
+}
+
+/* ============================================
+   MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    opacity: 0.8 !important;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button:hover,
+  input[type="number"]::-webkit-outer-spin-button:hover {
+    transform: scale(1.08);
+  }
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+
+.sidebar {
+  min-height: 100vh;
+  height: 100%;
+  width: 260px;
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 24px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.sidebar-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-header h2 .highlight {
+  color: #0097E0;
+}
+
+.sidebar-nav {
+  padding: 16px 12px;
+}
+
+.sidebar-nav .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 2px;
+}
+
+.sidebar-nav .nav-item:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.sidebar-nav .nav-item.active {
+  background: #e6f4fa;
+  color: #0097E0;
+}
+
+.sidebar-nav .nav-item .icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Sidebar Dark Mode */
+.dark-mode .sidebar,
+html.dark .sidebar {
+  background: #0f172a;
+  border-right-color: #1e293b;
+}
+
+.dark-mode .sidebar-header,
+html.dark .sidebar-header {
+  border-bottom-color: #1e293b;
+}
+
+.dark-mode .sidebar-header h2,
+html.dark .sidebar-header h2 {
+  color: #f1f5f9;
+}
+
+.dark-mode .sidebar-nav .nav-item,
+html.dark .sidebar-nav .nav-item {
+  color: #94a3b8;
+}
+
+.dark-mode .sidebar-nav .nav-item:hover,
+html.dark .sidebar-nav .nav-item:hover {
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+.dark-mode .sidebar-nav .nav-item.active,
+html.dark .sidebar-nav .nav-item.active {
+  background: rgba(0, 151, 224, 0.15);
+  color: #54C3F1;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.main-content {
+  margin-left: 260px;
+  padding: 32px;
+  min-height: 100vh;
+  background: #f0f2f5;
+  transition: background 0.3s ease;
+}
+
+.dark-mode .main-content,
+html.dark .main-content {
+  background: #0f172a;
+}
+
+/* ============================================
+   PAGE HEADER
+   ============================================ */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.page-header .title-section h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.page-header .title-section .subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.page-header .action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.page-header .action-buttons .btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-header .action-buttons .btn-primary {
+  background: #0097E0;
+  color: white;
+}
+
+.page-header .action-buttons .btn-primary:hover {
+  background: #0077B3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 151, 224, 0.3);
+}
+
+.page-header .action-buttons .btn-secondary {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.page-header .action-buttons .btn-secondary:hover {
+  background: #cbd5e1;
+}
+
+.page-header .action-buttons .btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.page-header .action-buttons .btn-danger:hover {
+  background: #dc2626;
+}
+
+/* Page Header Dark Mode */
+.dark-mode .page-header .title-section h1,
+html.dark .page-header .title-section h1 {
+  color: #f1f5f9;
+}
+
+.dark-mode .page-header .title-section .subtitle,
+html.dark .page-header .title-section .subtitle {
+  color: #94a3b8;
+}
+
+.dark-mode .page-header .action-buttons .btn-secondary,
+html.dark .page-header .action-buttons .btn-secondary {
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+.dark-mode .page-header .action-buttons .btn-secondary:hover,
+html.dark .page-header .action-buttons .btn-secondary:hover {
+  background: #334155;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-body {
+  padding: 24px;
+}
+
+.card-body .form-section {
+  margin-bottom: 28px;
+}
+
+.card-body .form-section:last-child {
+  margin-bottom: 0;
+}
+
+.card-body .form-section .section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Cards Dark Mode */
+.dark-mode .card,
+html.dark .card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .card:hover,
+html.dark .card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .card-header,
+html.dark .card-header {
+  border-bottom-color: #334155;
+}
+
+.dark-mode .card-header h3,
+html.dark .card-header h3 {
+  color: #f1f5f9;
+}
+
+.dark-mode .card-body .form-section .section-title,
+html.dark .card-body .form-section .section-title {
+  color: #f1f5f9;
+  border-bottom-color: #334155;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.form-group label .required {
+  color: #ef4444;
+  margin-left: 4px;
+}
+
+.form-group .form-control {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #0f172a;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.form-group .form-control:focus {
+  outline: none;
+  border-color: #54C3F1;
+  box-shadow: 0 0 0 3px rgba(84, 195, 241, 0.1);
+}
+
+.form-group .form-control:disabled {
+  background: #f8fafc;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.form-group .form-control.error {
+  border-color: #ef4444;
+}
+
+.form-group .form-control.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-group .error-message {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.form-group .input-icon {
+  position: relative;
+}
+
+.form-group .input-icon .icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.form-group .input-icon .form-control {
+  padding-left: 38px;
+}
+
+/* Form Dark Mode */
+.dark-mode .form-group label,
+html.dark .form-group label {
+  color: #94a3b8;
+}
+
+.dark-mode .form-group .form-control,
+html.dark .form-group .form-control {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark-mode .form-group .form-control:focus,
+html.dark .form-group .form-control:focus {
+  border-color: #54C3F1;
+  box-shadow: 0 0 0 3px rgba(84, 195, 241, 0.15);
+}
+
+.dark-mode .form-group .form-control:disabled,
+html.dark .form-group .form-control:disabled {
+  background: #1e293b;
+  color: #64748b;
+}
+
+.dark-mode .form-group .input-icon .icon,
+html.dark .form-group .input-icon .icon {
+  color: #64748b;
+}
+
+/* ============================================
+   FORM GRID
+   ============================================ */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-grid .form-group-full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .form-grid .form-group-full {
+    grid-column: 1;
+  }
+}
+
+/* ============================================
+   ALERTS
+   ============================================ */
+
+.alert {
+  padding: 14px 18px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  animation: slideDown 0.3s ease;
+}
+
+.alert-success {
+  background: #ecfdf5;
+  border: 1px solid #54C3F1;
+  color: #065f46;
+}
+
+.alert-error {
+  background: #fef2f2;
+  border: 1px solid #ef4444;
+  color: #991b1b;
+}
+
+.alert-info {
+  background: #eff6ff;
+  border: 1px solid #3b82f6;
+  color: #1e40af;
+}
+
+.alert .alert-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.alert .alert-content {
+  flex: 1;
+}
+
+.alert .alert-content .alert-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.alert .alert-content .alert-message {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Alerts Dark Mode */
+.dark-mode .alert-success,
+html.dark .alert-success {
+  background: rgba(0, 151, 224, 0.15);
+  border-color: rgba(84, 195, 241, 0.3);
+  color: #54C3F1;
+}
+
+.dark-mode .alert-error,
+html.dark .alert-error {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #f87171;
+}
+
+.dark-mode .alert-info,
+html.dark .alert-info {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes progressPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes energyGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 151, 224, 0.3), 0 0 40px rgba(0, 151, 224, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 151, 224, 0.5), 0 0 60px rgba(0, 151, 224, 0.2);
+  }
+}
+
+@keyframes energyPulseBorder {
+  0%, 100% {
+    border-color: #0097E0;
+  }
+  50% {
+    border-color: #54C3F1;
+  }
+}
+
+@keyframes floatEnergy {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+/* Animation Classes */
+.animate-pulse { animation: pulse 2s ease-in-out infinite; }
+.animate-fadeIn { animation: fadeIn 0.2s ease-in-out; }
+.animate-slideInRight { animation: slideInRight 0.3s ease-in-out; }
+.animate-slideInLeft { animation: slideInLeft 0.3s ease-in-out; }
+.animate-scaleIn { animation: scaleIn 0.3s ease-in-out; }
+.energy-glow { animation: energyGlow 3s ease-in-out infinite; }
+.energy-border { animation: energyPulseBorder 2s ease-in-out infinite; }
+.float-energy { animation: floatEnergy 3s ease-in-out infinite; }
+
+/* Stagger animations */
+.stagger-item {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.05s; }
+.stagger-item:nth-child(2) { animation-delay: 0.1s; }
+.stagger-item:nth-child(3) { animation-delay: 0.15s; }
+.stagger-item:nth-child(4) { animation-delay: 0.2s; }
+.stagger-item:nth-child(5) { animation-delay: 0.25s; }
+.stagger-item:nth-child(6) { animation-delay: 0.3s; }
+
+.slide-in-up { animation: slideInUp 0.5s ease forwards; }
+
+/* ============================================
+   GRADIENT TEXT
+   ============================================ */
+
+.gradient-text {
+  background: linear-gradient(135deg, #54C3F1, #0097E0, #0077B6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   GLASS EFFECT
+   ============================================ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .glass,
+html.dark .glass {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   ENERGY THEME - Daikin Blue
+   ============================================ */
+
+.bg-energy-gradient {
+  background: linear-gradient(135deg, #54C3F1, #0097E0, #0077B6);
+}
+
+.bg-energy-gradient-dark {
+  background: linear-gradient(135deg, #54C3F1, #0097E0, #0077B6);
+}
+
+/* Energy status dots */
+.energy-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.energy-dot.optimal { background: #0097E0; }
+.energy-dot.warning { background: #f59e0b; }
+.energy-dot.critical { background: #ef4444; }
+
+/* Stats card energy theme */
+.stat-card-energy {
+  background: linear-gradient(135deg, rgba(84, 195, 241, 0.1), rgba(0, 151, 224, 0.05));
+  border: 1px solid rgba(0, 151, 224, 0.2);
+  transition: all 0.3s ease;
+}
+
+.stat-card-energy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 151, 224, 0.15);
+}
+
+.dark-mode .stat-card-energy,
+html.dark .stat-card-energy {
+  background: linear-gradient(135deg, rgba(84, 195, 241, 0.05), rgba(0, 151, 224, 0.02));
+  border: 1px solid rgba(0, 151, 224, 0.1);
+}
+
+/* Loading spinner */
+.spinner-energy {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 151, 224, 0.2);
+  border-top: 4px solid #0097E0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Progress bar */
+.progress-energy {
+  background: linear-gradient(90deg, #54C3F1, #0097E0);
+  height: 4px;
+  border-radius: 9999px;
+  animation: progressPulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   TABLE
+   ============================================ */
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table tbody td {
+  color: #0f172a;
+  background: #ffffff;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.table thead th {
+  color: #0f172a;
+  background: #f1f5f9;
+  padding: 12px 16px;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.table tbody tr {
+  background: #ffffff;
+  transition: background 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* Table Dark Mode */
+.dark-mode .table tbody td,
+html.dark .table tbody td {
+  color: #e2e8f0;
+  background: #1e293b;
+  border-bottom-color: #334155;
+}
+
+.dark-mode .table thead th,
+html.dark .table thead th {
+  color: #94a3b8;
+  background: #1e293b;
+  border-bottom-color: #334155;
+}
+
+.dark-mode .table tbody tr,
+html.dark .table tbody tr {
+  background: #1e293b;
+}
+
+.dark-mode .table tbody tr:hover,
+html.dark .table tbody tr:hover {
+  background: #2d3a4f;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 280px;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 20px 16px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .page-header .action-buttons {
+    width: 100%;
+  }
+
+  .page-header .action-buttons .btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+}
+
+/* ============================================
+   COMPACT MODE
+   ============================================ */
+
+.compact-mode .card { padding: 12px !important; }
+.compact-mode .p-4 { padding: 8px !important; }
+.compact-mode .p-6 { padding: 12px !important; }
+.compact-mode .gap-4 { gap: 8px !important; }
+.compact-mode .gap-6 { gap: 12px !important; }
+.compact-mode .space-y-4 > * + * { margin-top: 8px !important; }
+.compact-mode .space-y-6 > * + * { margin-top: 12px !important; }
+
+/* ============================================
+   STATUS BADGES
+   ============================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badge-success { background: #ecfdf5; color: #065f46; }
+.badge-warning { background: #fffbeb; color: #92400e; }
+.badge-danger { background: #fef2f2; color: #991b1b; }
+.badge-info { background: #eff6ff; color: #1e40af; }
+
+/* Badges Dark Mode */
+.dark-mode .badge-success,
+html.dark .badge-success {
+  background: rgba(0, 151, 224, 0.15);
+  color: #54C3F1;
+}
+
+.dark-mode .badge-warning,
+html.dark .badge-warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.dark-mode .badge-danger,
+html.dark .badge-danger {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+.dark-mode .badge-info,
+html.dark .badge-info {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+/* ============================================
+   TOGGLE SWITCH
+   ============================================ */
+
+.toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #cbd5e1;
+  transition: 0.3s ease;
+  border-radius: 9999px;
+}
+
+.toggle-switch .slider::before {
+  content: '';
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  transition: 0.3s ease;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-switch input:checked + .slider {
+  background: #0097E0;
+}
+
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.toggle-switch input:disabled + .slider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dark-mode .toggle-switch .slider,
+html.dark .toggle-switch .slider {
+  background: #334155;
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.dark-mode .divider,
+html.dark .divider {
+  color: #64748b;
+}
+
+.dark-mode .divider::before,
+.dark-mode .divider::after,
+html.dark .divider::before,
+html.dark .divider::after {
+  background: #334155;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-muted { color: #94a3b8; }
+.dark-mode .text-muted,
+html.dark .text-muted { color: #64748b; }
+
+.bg-subtle { background: #f8fafc; }
+.dark-mode .bg-subtle,
+html.dark .bg-subtle { background: #1e293b; }
+
+.border-subtle { border: 1px solid #e2e8f0; }
+.dark-mode .border-subtle,
+html.dark .border-subtle { border-color: #334155; }
+
+.shadow-subtle { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); }
+.dark-mode .shadow-subtle,
+html.dark .shadow-subtle { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); }
+
+/* ============================================
+   THEME TOGGLE OVERRIDES
+   ============================================ */
+
+/* Light mode */
+html:not(.dark):not(.dark-mode) body {
+  color: #0f172a !important;
+}
+
+html:not(.dark):not(.dark-mode) .text-slate-900,
+html:not(.dark):not(.dark-mode) .text-slate-800,
+html:not(.dark):not(.dark-mode) .text-slate-700,
+html:not(.dark):not(.dark-mode) h1,
+html:not(.dark):not(.dark-mode) h2,
+html:not(.dark):not(.dark-mode) h3,
+html:not(.dark):not(.dark-mode) h4,
+html:not(.dark):not(.dark-mode) p,
+html:not(.dark):not(.dark-mode) span,
+html:not(.dark):not(.dark-mode) div {
+  color: #0f172a !important;
+}
+
+html:not(.dark):not(.dark-mode) .text-slate-600 { color: #475569 !important; }
+html:not(.dark):not(.dark-mode) .text-slate-500 { color: #64748b !important; }
+html:not(.dark):not(.dark-mode) .text-slate-400 { color: #94a3b8 !important; }
+
+html:not(.dark):not(.dark-mode) .bg-white { background-color: #ffffff !important; }
+html:not(.dark):not(.dark-mode) .bg-slate-50 { background-color: #f8fafc !important; }
+html:not(.dark):not(.dark-mode) .bg-slate-100 { background-color: #f1f5f9 !important; }
+html:not(.dark):not(.dark-mode) .border-slate-200 { border-color: #e2e8f0 !important; }
+html:not(.dark):not(.dark-mode) .border-slate-300 { border-color: #cbd5e1 !important; }
+
+/* Dark mode */
+html.dark body,
+html.dark-mode body { color: #e2e8f0 !important; }
+
+html.dark .text-slate-900,
+html.dark-mode .text-slate-900,
+html.dark h1,
+html.dark-mode h1,
+html.dark h2,
+html.dark-mode h2,
+html.dark h3,
+html.dark-mode h3,
+html.dark h4,
+html.dark-mode h4 {
+  color: #f1f5f9 !important;
+}
+
+html.dark .text-slate-800,
+html.dark-mode .text-slate-800 { color: #e2e8f0 !important; }
+html.dark .text-slate-700,
+html.dark-mode .text-slate-700 { color: #cbd5e1 !important; }
+html.dark .text-slate-600,
+html.dark-mode .text-slate-600 { color: #94a3b8 !important; }
+html.dark .text-slate-500,
+html.dark-mode .text-slate-500 { color: #64748b !important; }
+html.dark .text-slate-400,
+html.dark-mode .text-slate-400 { color: #475569 !important; }
+
+html.dark .bg-white,
+html.dark-mode .bg-white { background-color: #1e293b !important; }
+html.dark .bg-slate-50,
+html.dark-mode .bg-slate-50 { background-color: #0f172a !important; }
+html.dark .bg-slate-100,
+html.dark-mode .bg-slate-100 { background-color: #1e293b !important; }
+html.dark .border-slate-200,
+html.dark-mode .border-slate-200 { border-color: #334155 !important; }
+html.dark .border-slate-300,
+html.dark-mode .border-slate-300 { border-color: #475569 !important; }
+
+/* ============================================
+   SPECIAL OVERRIDES
+   ============================================ */
+
+/* Keep required-star red everywhere */
+html .required-star,
+html:not(.dark):not(.dark-mode) .required-star,
+html.dark .required-star,
+html.dark-mode .required-star {
+  color: #dc2626 !important;
+}
+
+/* Validation messages stay red */
+input.validation-input-error::placeholder,
+html.dark input.validation-input-error::placeholder,
+html.dark-mode input.validation-input-error::placeholder {
+  color: #f87171 !important;
+  opacity: 1;
+}
+
+/* LOGIN PAGE - White card, black text in light mode */
+html:not(.dark):not(.dark-mode) .login-page .bg-white\/95,
+html:not(.dark):not(.dark-mode) .login-page .bg-white\/90 {
+  background-color: #ffffff !important;
+}
+
+html:not(.dark):not(.dark-mode) .login-page h1,
+html:not(.dark):not(.dark-mode) .login-page p,
+html:not(.dark):not(.dark-mode) .login-page label,
+html:not(.dark):not(.dark-mode) .login-page input {
+  color: #0f172a !important;
+}
+
+html:not(.dark):not(.dark-mode) .login-page input::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1;
+}
+
+/* LOGIN PAGE - Dark card, white text in dark mode */
+html.dark .login-page .bg-white\/95,
+html.dark .login-page .bg-white\/90,
+html.dark-mode .login-page .bg-white\/95,
+html.dark-mode .login-page .bg-white\/90 {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+}
+
+html.dark .login-page h1,
+html.dark .login-page p,
+html.dark .login-page label,
+html.dark .login-page input,
+html.dark-mode .login-page h1,
+html.dark-mode .login-page p,
+html.dark-mode .login-page label,
+html.dark-mode .login-page input {
+  color: #ffffff !important;
+}
+
+html.dark .login-page input::placeholder,
+html.dark-mode .login-page input::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1;
+}
+
+/* Fix for dark mode cards and text */
+.dark-mode .card .text-slate-600,
+html.dark .card .text-slate-600 { color: #94a3b8 !important; }
+.dark-mode .card .text-slate-700,
+html.dark .card .text-slate-700 { color: #cbd5e1 !important; }
+.dark-mode .card .text-slate-800,
+html.dark .card .text-slate-800 { color: #e2e8f0 !important; }
+.dark-mode .card .text-slate-900,
+html.dark .card .text-slate-900 { color: #f1f5f9 !important; }
+
+/* Fix for input text in dark mode */
+.dark-mode input:not(.text-white),
+.dark-mode textarea:not(.text-white),
+.dark-mode select:not(.text-white),
+html.dark input:not(.text-white),
+html.dark textarea:not(.text-white),
+html.dark select:not(.text-white) {
+  color: #e2e8f0 !important;
+}
+
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder,
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Ensure labels are visible in dark mode */
+.dark-mode label,
+html.dark label {
+  color: #94a3b8 !important;
+}
+
+/* Fix for stat cards in dark mode */
+.dark-mode .stat-card-energy .text-slate-900,
+html.dark .stat-card-energy .text-slate-900 {
+  color: #f1f5f9 !important;
+}
+
+.dark-mode .stat-card-energy .text-slate-600,
+html.dark .stat-card-energy .text-slate-600 {
+  color: #94a3b8 !important;
+}
+
+/* Fix for energy analysis results */
+.dark-mode .bg-white .text-slate-900,
+html.dark .bg-white .text-slate-900 {
+  color: #f1f5f9 !important;
+}
+.dark-mode .bg-white .text-slate-700,
+html.dark .bg-white .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+.dark-mode .bg-white .text-slate-600,
+html.dark .bg-white .text-slate-600 {
+  color: #94a3b8 !important;
+}
+.dark-mode .bg-white h3,
+.dark-mode .bg-white h2,
+html.dark .bg-white h3,
+html.dark .bg-white h2 {
+  color: #f1f5f9 !important;
+}
+
+/* Fix for create account button visibility */
+.create-account-btn {
+  color: #2563eb !important;
+  border: 2px solid #3b82f6 !important;
+  background-color: transparent !important;
+}
+
+.create-account-btn:hover {
+  background-color: #eff6ff !important;
+  border-color: #1d4ed8 !important;
+}
+
+.dark .create-account-btn,
+.dark-mode .create-account-btn {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.dark .create-account-btn:hover,
+.dark-mode .create-account-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: #ffffff !important;
+}

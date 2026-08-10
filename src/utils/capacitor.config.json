@@ -1,0 +1,5 @@
+{
+  "appId": "com.daikin.energy.simulator",
+  "appName": "AI Energy Simulator",
+  "webDir": "dist"
+}
